@@ -10,15 +10,14 @@ $UserName = "XXX@XXX.onmicrosoft.com"
 $SecurePassword = ConvertTo-SecureString "XXX" -AsPlainText -Force
 
 ###Define variable
-$numberItemsToCreate = 100
-$itemNamePrefix = "Item1_"
 $batchSize = 40
+$numberItemsToCreate = 100
+$itemNamePrefix = "Item_"
 
 ###Connect to site collection
 $clientContext = New-Object Microsoft.SharePoint.Client.ClientContext($SiteUrl)
 $credentials = New-Object Microsoft.SharePoint.Client.SharePointOnlineCredentials($UserName, $SecurePassword)
 $clientContext.Credentials = $credentials
-
 
 ###Connect to List
 $list = $clientContext.get_web().get_lists().getByTitle($ListName);
@@ -46,6 +45,5 @@ for($j=1; $j -le $batchSize; $j++)
     Start-Sleep -s 1
 }
 
- 
 Write-Host "Finished!" -ForegroundColor Green
 
