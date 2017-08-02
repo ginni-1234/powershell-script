@@ -7,7 +7,7 @@ Add-Type -Path “C:\Program Files\Common Files\microsoft shared\Web Server Exte
 
 ###Specify tenant admin and site URL
 $SiteUrl = "https://XXX.sharepoint.com/sites/XXX"
-$UserName = "SPSiteAdmin@XXX.onmicrosoft.com"
+$UserName = "user@XXX.onmicrosoft.com"
 $SecurePassword = ConvertTo-SecureString "XXX" -AsPlainText -Force
 $WorkflowName = "XXX"
 $numberWorkflowsToStart = 2
