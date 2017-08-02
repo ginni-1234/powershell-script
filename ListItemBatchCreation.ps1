@@ -1,4 +1,4 @@
-﻿#Add references to SharePoint client assemblies and authenticate to Office 365 site - required for CSOM
+﻿###Add references to SharePoint client assemblies and authenticate to Office 365 site - required for CSOM
 Add-Type -Path “C:\Program Files\Common Files\microsoft shared\Web Server Extensions\15\ISAPI\Microsoft.SharePoint.Client.dll”
 Add-Type -Path “C:\Program Files\Common Files\microsoft shared\Web Server Extensions\15\ISAPI\Microsoft.SharePoint.Client.Runtime.dll”
 Add-Type -Path “C:\Program Files\Common Files\microsoft shared\Web Server Extensions\15\ISAPI\Microsoft.SharePoint.Client.WorkflowServices.dll”
