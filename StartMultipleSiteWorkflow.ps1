@@ -1,4 +1,4 @@
-﻿#http://www.rapidcircle.com/powershell-start-a-workflow-for-all-items-a-list-on-sharepoint-online/
+﻿####Refer to: http://www.rapidcircle.com/powershell-start-a-workflow-for-all-items-a-list-on-sharepoint-online/
 
 ###Add references to SharePoint client assemblies and authenticate to Office 365 site - required for CSOM
 Add-Type -Path “C:\Program Files\Common Files\microsoft shared\Web Server Extensions\15\ISAPI\Microsoft.SharePoint.Client.dll”
@@ -32,8 +32,10 @@ $ClientContext.Load($WorkflowAssociations)
 $ClientContext.ExecuteQuery()
 
 ###List down all workflow id and name
-foreach ($wf in $WorkflowAssociations) { 
-    if($wf.Name -eq $WorkflowName){
+foreach ($wf in $WorkflowAssociations) 
+{ 
+    if($wf.Name -eq $WorkflowName)
+    {
         $WorkflowAssociation = $wf
         break
     }
