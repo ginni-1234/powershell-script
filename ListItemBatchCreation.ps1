@@ -40,9 +40,36 @@ for($j=1; $j -le $batchSize; $j++)
         write-host "Item created: $preffix$itemNamePrefix$newItemSuffix"
     }
 
+###Retry on items creation
+do
+{
+   try
+   {
     $clientContext.ExecuteQuery()
-    write-host "Sleeping 1 second"
+    write-host "Sleeping 1 second" -ForegroundColor Yellow
     Start-Sleep -s 1
+    $stopLoop = $true
+
+   }
+   catch
+   {
+    $ErrorMessage = $_.Exception.Message
+    Write-Host "Exception Message: $ErrorMessage" -ForegroundColor red
+    # Break
+       if ($Retrycount -gt 3){
+			Write-Host "Could not send Information after 3 retrys."
+			$stopLoop = $true
+		    }
+	    else {
+			Write-Host "Could not send Information retrying in 30 seconds..."
+			Start-Sleep -Seconds 30
+            Write-Host $Retrycount
+			$Retrycount = $Retrycount + 1
+            Write-Host $Retrycount
+            $stopLoop = $false
+		    }
+     }
+} while ($stopLoop -eq $false)
 }
 
 Write-Host "Finished!" -ForegroundColor Green
